@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="styles/style.css">
+</head>
+
+<body>
+    <div>
+        <h1>Timer+</h1>
+        <h2>Для котенка</h2>
+    </div>
+    <div class="content">
+
+        <!-- Timer -->
+
+        <div id="timer" class="timer_wrapper">
+            <div class="timer">
+                <h2>НАЗВАНИЕ 1</h2>
+
+                <div class="timer__input_block">
+                    <p>Время:</p>
+                    <div>
+                        <input id="timer_input_timer" class="timer__input" placeholder="10:12:23" value="00:00:10" />
+                        <p class="timer__input_hint">(В формате ЧЧ:ММ:СС)</p>
+                    </div>
+                    <button id="timer_apply_time_timer">Применить</button>
+
+                </div>
+
+                <div class="timer__clock">
+                    <div class="timer__clock__timer_block">
+                        <span id="timer_hours_timer">20</span>
+                        часов
+                    </div>
+                    <div class="timer__clock__timer_block">
+                        <span id="timer_minutes_timer">56</span>
+                        минут
+                    </div>
+                    <div class="timer__clock__timer_block">
+                        <span id="timer_seconds_timer">20</span>
+                        секунд
+                    </div>
+                </div>
+                <div class="timer__button_wrapper">
+                    <button id="timer_toggle_start_timer">Старт</button>
+                    <button id="timer_toggle_abort_lap_timer">Сброс</button>
+                </div>
+            </div>
+            <ul class="timer__list">
+                <li>
+                    <span id="timer__list_item_start_timer">Дата и время</span>
+                    <span id="timer__list_item_duration_timer">Длительность</span>
+                    <span id="timer__list_item_end_timer">Статус</span>
+                </li>
+            </ul>
+        </div>
+
+        <!-- STOPWATCH -->
+
+        <div id="stopwatch" class="timer_wrapper">
+            <div class="timer">
+                <h2>НАЗВАНИЕ 2</h2>
+
+                <div class="timer__clock stopwatch">
+                    <div class="timer__clock__timer_block">
+                        <span id="timer_hours_stopwatch">20</span>
+                        часов
+                    </div>
+                    <div class="timer__clock__timer_block">
+                        <span id="timer_minutes_stopwatch">56</span>
+                        минут
+                    </div>
+                    <div class="timer__clock__timer_block">
+                        <span id="timer_seconds_stopwatch">20</span>
+                        секунд
+                    </div>
+                </div>
+                <div class="timer__button_wrapper">
+                    <button id="timer_toggle_start_stopwatch">Старт</button>
+                    <button id="timer_abort_stopwatch">Сброс</button>
+                </div>
+            </div>
+            <ul class="timer__list">
+                <li>
+                    <span id="timer__list_item_start_stopwatch">Дата и время</span>
+                    <span id="timer__list_item_time_stopwatch">Общее время</span>
+                    <span id="timer__list_item_lap_time_stopwatch">Время круга</span>
+                </li>
+            </ul>
+        </div>
+
+        <!-- Interval -->
+
+        <div id="timer" class="timer_wrapper">
+            <div class="timer">
+                <h2>НАЗВАНИЕ 3</h2>
+
+                <div class="timer__input_block">
+                    <p>Промежуток:</p>
+                    <div>
+                        <input id="timer_input_interval" class="timer__input" placeholder="10:12:23" />
+                        <p class="timer__input_hint">(В формате ЧЧ:ММ:СС)</p>
+                    </div>
+                    <button id="timer_apply_time_timer">Применить</button>
+                </div>
+
+                <div class="timer__clock">
+                    <div class="timer__clock__timer_block">
+                        <span id="timer_hours_interval">20</span>
+                        часов
+                    </div>
+                    <div class="timer__clock__timer_block">
+                        <span id="timer_minutes_interval">56</span>
+                        минут
+                    </div>
+                    <div class="timer__clock__timer_block">
+                        <span id="timer_seconds_interval">20</span>
+                        секунд
+                    </div>
+                </div>
+                <div class="timer__button_wrapper">
+                    <button id="timer_toggle_start_interval">Старт</button>
+                    <button id="timer_abort_interval">Сброс</button>
+                </div>
+            </div>
+            <ul class="timer__list">
+                <li>
+                    <span id="timer__list_item_start_interval">Дата и время</span>
+                    <span id="timer__list_item_duration_interval">Длительность интервала</span>
+                    <span id="timer__list_item_end_interval">№ интервала</span>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <script type="module" src="scripts/script.js"></script>
+    <script type="module" src="scripts/helper.js"></script>
+    <script type="module" src="scripts/timer.js"></script>
+</body>
+
+</html>
