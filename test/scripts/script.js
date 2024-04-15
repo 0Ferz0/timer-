@@ -14,15 +14,7 @@ window.addEventListener(`DOMContentLoaded`, () => {
     headersTimer[1].innerHTML = `Секундомер`;
     headersTimer[2].innerHTML = `Интервал`;
 
-
-
-
-
-    // setTime(intervalClock, [0, 0, 0]);
-
     startTimer()
 
-
     startStopwatch()
-
 });
