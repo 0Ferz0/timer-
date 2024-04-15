@@ -23,7 +23,6 @@ window.addEventListener(`DOMContentLoaded`, () => {
     startTimer()
 
 
-    git
-
+    startStopwatch()
 
 });
