@@ -1,4 +1,5 @@
 import { startTimer } from "./timer.js"
+import { startStopwatch } from "./stopwatch.js "
 
 window.addEventListener(`DOMContentLoaded`, () => {
     const title = document.querySelector(`title`)
@@ -22,7 +23,7 @@ window.addEventListener(`DOMContentLoaded`, () => {
     startTimer()
 
 
-
+    git
 
 
 });
