@@ -1,4 +1,5 @@
 import { startTimer } from "./timer.js"
+import { startStopwatch } from "./stopwatch.js "
 
 window.addEventListener(`DOMContentLoaded`, () => {
     const title = document.querySelector(`title`)
@@ -13,16 +14,7 @@ window.addEventListener(`DOMContentLoaded`, () => {
     headersTimer[1].innerHTML = `Секундомер`;
     headersTimer[2].innerHTML = `Интервал`;
 
-
-
-
-    // setTime(stopwatchClock, [0, 0, 0]);
-    // setTime(intervalClock, [0, 0, 0]);
-
     startTimer()
 
-
-
-
-
+    startStopwatch()
 });
