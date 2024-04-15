@@ -17,7 +17,7 @@ window.addEventListener(`DOMContentLoaded`, () => {
 
 
 
-    // setTime(stopwatchClock, [0, 0, 0]);
+
     // setTime(intervalClock, [0, 0, 0]);
 
     startTimer()

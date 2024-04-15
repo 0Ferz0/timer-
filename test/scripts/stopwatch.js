@@ -1,66 +1,50 @@
-import { stopwatchClock, stopwatchWrapper, stopwatchStart, stopwatchStop, changeBackgroundColor, changeBorderColor } from "./helper.js"
+import { stopwatchClock, setTime, stopwatchWrapper, stopwatchStart, stopwatchStop, changeBackgroundColor, changeBorderColor } from "./helper.js"
 
 export const startStopwatch = () => {
-    const btnStopwatch = document.querySelectorAll(`.timer__button_wrapper`);
-
-
 
     let isStopwatchPlay = true;
     let timeInterval
+    let t = 0
 
-    // setDefaultstopwatch()
+    setDefaultStopwatch()
 
     stopwatchStart.addEventListener(`click`, () => {
-        if (isStopwatchPlay === false) {
-            isStopwatchPlay = true;
-            stopwatchStart.innerHTML = `Продолжить`
-            stopwatchStop.innerHTML = `Сброс`
-
-            clearInterval(timeInterval)
-
-            changeBackgroundColor(timerStart, `orange`);
-            changeBorderColor(timerWrapper, `orange`)
-        } else {
+        if (isStopwatchPlay) {
             isStopwatchPlay = false;
             stopwatchStart.innerHTML = `Пауза`
             stopwatchStop.innerHTML = `Кружочек`
 
             changeBackgroundColor(stopwatchStart, `green`)
             changeBorderColor(stopwatchWrapper, `green`)
+            changeBackgroundColor(stopwatchStop, `orange`)
 
-
-            const userTime = {
-                hours: +stopwatchClock[0].innerHTML, minutes: +stopwatchClock[1].innerHTML, seconds: +timerClock[2].innerHTML
-            }
-
-            const newTime = new Date();
-
-            newTime.setHours(newTime.getHours() + userTime.hours);
-            newTime.setMinutes(newTime.getMinutes() + userTime.minutes);
-            newTime.setSeconds(newTime.getSeconds() + userTime.seconds);
+            const newTime = new Date((new Date).getTime() - t);
 
             setClock(newTime);
+        } else {
+            isStopwatchPlay = true;
+            stopwatchStart.innerHTML = `Продолжить`
+            stopwatchStop.innerHTML = `Сброс`
+
+            clearInterval(timeInterval)
+
+            changeBackgroundColor(stopwatchStart, `orange`);
+            changeBorderColor(stopwatchWrapper, `orange`)
+            changeBackgroundColor(stopwatchStop, `red`)
         }
     })
 
     stopwatchStop.addEventListener(`click`, () => {
-        clearInterval(timeInterval)
-        setDefaultTimer()
-    })
-
-    btnStopwatch.addEventListener(`click`, () => {
-        const stopwatchNums = getTimerInput()
-
-        if (stopwatchNums.length === 3) {
-            setTime(stopwatchClock, stopwatchNums);
-            changeBackgroundColor(timerStart, `green`);
-            changeBackgroundColor(timerStop, `red`);
+        if (isStopwatchPlay) {
+            clearInterval(timeInterval)
+            setDefaultStopwatch()
         }
     })
 
-    function setDefaultTimer() {
+    function setDefaultStopwatch() {
         isStopwatchPlay = true;
         stopwatchStart.innerHTML = `Старт`;
+        t = 0;
 
         setTime(stopwatchClock, [0, 0, 0]);
 
@@ -69,15 +53,9 @@ export const startStopwatch = () => {
         changeBorderColor(stopwatchWrapper, `#947fff`)
     }
 
-    // function getStopwatchInput() {
-    //     const inputStopwatch = document.querySelector(`#timer_input_timer`);
-    //     return inputTimer.value.split(`:`)
-    //         .map(item => +item)
-    // }
-
     function getTimeRemaing(userTime) {
         const currentTime = new Date();
-        const time = userTime.getTime() + currentTime.getTime();
+        const time = currentTime.getTime() - userTime.getTime();
 
         const hours = Math.floor((time / 1000 / 60 / 60) % 24),
             minutes = Math.floor((time / 1000 / 60) % 60),
@@ -85,29 +63,20 @@ export const startStopwatch = () => {
 
         return {
             total: time,
-            'hours': hours,
-            'minutes': minutes,
-            'seconds': seconds
+            hours,
+            minutes,
+            seconds
         }
     }
 
     function setClock(userTime) {
-        timeInterval = setInterval(updateClock, 1000);
-
-        updateClock()
+        timeInterval = setInterval(() => t = updateClock(), 1000);
 
         function updateClock() {
             const t = getTimeRemaing(userTime);
 
-            setTime(timerClock, [t.hours, t.minutes, t.seconds]);
-
-            // if (t.total <= 0) {
-            //     clearInterval(timeInterval)
-            //     setDefaultTimer()
-            // }
+            setTime(stopwatchClock, [t.hours, t.minutes, t.seconds]);
+            return t.total
         }
-
     }
-
 }
-
